@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a>
 
   </li>
   </ul>
@@ -203,118 +203,6 @@
 
       
           <p>时间就是最巨大的谎</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-
-
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zephyr0ne.cn/2022/06/07/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%AC%AC%E4%B8%80%E5%8F%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpg">
-      <meta itemprop="name" content="奥利奥">
-      <meta itemprop="description" content="时间就是最巨大的谎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zephyr0ne">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/07/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%AC%AC%E4%B8%80%E5%8F%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">如何创建个人第一台云服务器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-07 14:57:00 / 修改时间：17:33:58" itemprop="dateCreated datePublished" datetime="2022-06-07T14:57:00+08:00">2022-06-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="部署MySQL-保姆级教程"><a href="#部署MySQL-保姆级教程" class="headerlink" title="部署MySQL(保姆级教程)"></a>部署MySQL(保姆级教程)</h1><h2 id="前置任务"><a href="#前置任务" class="headerlink" title="前置任务"></a>前置任务</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/act/pro/618season?channel=sp&fromSource=gwzcw.6605281.6605281.6605281&utm_medium=cpc&utm_id=gwzcw.6605281.6605281.6605281&bd_vid=8675316566586193746">点击腾讯云网站</a></li>
-<li>注册登录账号进行购买轻量云服务器</li>
-<li>进入云服务器控制台重置初始密码</li>
-<li>防火墙设置：22端口访问权限设置为本机IP（防止恶意攻击）</li>
-</ol>
-<h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><ol>
-<li><p>使用Xshell连接工具，新建会话</p>
-</li>
-<li><p>登录账号之后首先更新yum 终端输入 yum update<br><img src="https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607151019.png"><br>出现上面的complete说明更新成功</p>
-</li>
-<li><p>设置Docker yum源(yum是Linux系统的安装软件必备工具)<br><code>sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo </code><br>如果出现报错信息<br><img src="https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607152640.png"><br>则点击   <em><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43762191/article/details/124474377">centOS8 yum源更换镜像</a></em>  查看解决方法<br>如果还是有错误信息则输入<br><code>yum -y install yum-utils yum clean all yum makecache</code><br>来安装yum工具类</p>
-</li>
-<li><p>查看当前可以安装docker-ce版本<br><code>yum list docker-ce --showduplicates | sort -r</code><br><img src="https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607153755.png">  </p>
-</li>
-<li><p>安装指定版本的格式 ,注意3:xxx 请移除3:<br><code>yum -y install docker-ce-[VERSION]</code><br>安装成功之后<br><img src="https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607154412.png"></p>
-</li>
-<li><p>重启Docker<br><code>systemctl restart docker</code></p>
-</li>
-<li><p>设置Docker开机启动<br><code>systemctl enable docker</code></p>
-</li>
-<li><p>查看Docker版本信息<br><code>docker version</code><br><img src="https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607154535.png"></p>
-</li>
-</ol>
-<p><strong>docker已经成功安装！</strong></p>
-<h2 id="使用docker部署MySQL镜像"><a href="#使用docker部署MySQL镜像" class="headerlink" title="使用docker部署MySQL镜像"></a>使用docker部署MySQL镜像</h2><ol>
-<li>拉取Mysql镜像<br><code>docker pull mysql:8.0.25</code></li>
-<li>服务器上创建对应的数据目录<br><code>mkdir -p /data/scms/mysql8/&#123;logs,conf,data&#125; </code><br>目录说明：<br>logs为日志目录，conf为my.cnf配置文件目录，data为数据文件存放路径</li>
-<li>执行容器创建命令：<br>&#96;&#96;&#96;<br>docker run -p 3306:3306 -d –name mysql  \</li>
-</ol>
-<p>–privileged&#x3D;true   <br>-v &#x2F;data&#x2F;rushB&#x2F;MySQL8&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql <br>-v &#x2F;data&#x2F;rushB&#x2F;MySQL8&#x2F;conf:&#x2F;etc&#x2F;mysql <br>-v &#x2F;data&#x2F;rushB&#x2F;MySQL8&#x2F;logs:&#x2F;var&#x2F;log&#x2F;mysql  <br>-v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime  <br>-e MYSQL_ROOT_PASSWORD&#x3D;密码  <br>mysql:8.0.25</p>
-<pre><code>部署完之后输入  
-`docker ps`  
-查看mysql容器状态
-![](https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607155713.png)  
-4. 进入服务器控制台添加防火墙规则  
-![](https://zephyr0ne-1311513069.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220607160242.png)
-5. 使用Navicat新建MySQL连接。输入账号密码，测试连接，显示连接成功！  
-PS：如果第5步连接不成功，去Xshell终端输入  
-`firewall-cmd --list-all`  
-查看端口是否存在  
-如果没有3306端口则输入  
-`firewall-cmd --zone=public --add-port=3306/tcp --permanent`  
-然后重启  
-`firewall-cmd --reload`
-</code></pre>
 
       
     </div>
@@ -494,7 +382,7 @@ PS：如果第5步连接不成功，去Xshell终端输入
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -554,7 +442,7 @@ PS：如果第5步连接不成功，去Xshell终端输入
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共667字</span>
+  <span class="post-count">博客全站共84字</span>
 </div>
 
         
